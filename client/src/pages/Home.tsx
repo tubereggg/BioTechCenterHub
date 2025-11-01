@@ -2,9 +2,12 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { ArticleCard } from "@/components/ArticleCard";
 import { CategoryCard } from "@/components/CategoryCard";
-import { ResearcherCard } from "@/components/ResearcherCard";
+import { CreatorCard } from "@/components/CreatorCard";
 import { Newsletter } from "@/components/Newsletter";
 import { Footer } from "@/components/Footer";
+import { FeaturedSlideshow } from "@/components/FeaturedSlideshow";
+import { useLanguage } from "@/components/LanguageProvider";
+import { translations } from "@/lib/translations";
 import { Dna, Microscope, Atom, Pill, Sparkles, Zap } from "lucide-react";
 import crispImage from "@assets/generated_images/CRISPR_technology_featured_image_430ccd6e.png";
 import syntheticImage from "@assets/generated_images/Synthetic_biology_article_image_a8d539fb.png";
@@ -13,6 +16,9 @@ import femaleResearcher from "@assets/generated_images/Female_researcher_profile
 import maleResearcher from "@assets/generated_images/Male_researcher_profile_photo_cc5dedd3.png";
 
 export default function Home() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const featuredArticles = [
     {
       id: "1",
@@ -33,6 +39,16 @@ export default function Home() {
       author: { name: "Dr. Michael Torres", avatar: maleResearcher },
       readTime: 12,
       date: "Oct 28, 2025"
+    },
+    {
+      id: "3",
+      title: "Gene Therapy Breakthrough in Treating Rare Diseases",
+      excerpt: "Recent clinical trials show promising results in using gene therapy to treat previously incurable genetic conditions.",
+      category: "Gene Therapy",
+      image: geneImage,
+      author: { name: "Dr. Sarah Chen", avatar: femaleResearcher },
+      readTime: 10,
+      date: "Oct 25, 2025"
     }
   ];
 
@@ -114,11 +130,12 @@ export default function Home() {
     }
   ];
 
-  const researchers = [
+  const creators = [
     {
       id: "sarah-chen",
       name: "Dr. Sarah Chen",
-      title: "Professor of Molecular Biology",
+      position: "Professor of Molecular Biology",
+      role: "Researcher",
       avatar: femaleResearcher,
       expertise: ["CRISPR", "Gene Therapy"],
       publicationsCount: 42
@@ -126,26 +143,29 @@ export default function Home() {
     {
       id: "michael-torres",
       name: "Dr. Michael Torres",
-      title: "Lead Researcher, Synthetic Biology",
+      position: "Lead Researcher, Synthetic Biology",
+      role: "Researcher",
       avatar: maleResearcher,
       expertise: ["Synthetic Biology", "Bioinformatics"],
       publicationsCount: 38
     },
     {
-      id: "emma-liu",
-      name: "Dr. Emma Liu",
-      title: "Director of Immunotherapy Research",
-      avatar: femaleResearcher,
-      expertise: ["Immunotherapy", "Oncology"],
-      publicationsCount: 51
+      id: "alex-rivera",
+      name: "Alex Rivera",
+      position: "Science Journalist & Editor",
+      role: "Writer",
+      avatar: maleResearcher,
+      expertise: ["Science Communication", "BioTech"],
+      publicationsCount: 156
     },
     {
-      id: "james-wilson",
-      name: "Dr. James Wilson",
-      title: "Professor of Regenerative Medicine",
-      avatar: maleResearcher,
-      expertise: ["Stem Cells", "Tissue Engineering"],
-      publicationsCount: 47
+      id: "sophia-patel",
+      name: "Sophia Patel",
+      position: "Medical Writer",
+      role: "Writer",
+      avatar: femaleResearcher,
+      expertise: ["Gene Therapy", "Clinical Research"],
+      publicationsCount: 89
     }
   ];
 
@@ -154,26 +174,22 @@ export default function Home() {
       <Header />
       <Hero />
 
-      <section className="border-t py-16">
+      <section className="border-t py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="mb-8 flex items-center justify-between">
-            <h2 className="font-display text-3xl font-bold md:text-4xl">Featured Research</h2>
+          <div className="mb-6 md:mb-8">
+            <h2 className="font-display text-3xl font-bold md:text-4xl">{t.home.featuredResearch}</h2>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            {featuredArticles.map((article) => (
-              <ArticleCard key={article.id} {...article} />
-            ))}
-          </div>
+          <FeaturedSlideshow articles={featuredArticles} />
         </div>
       </section>
 
-      <section className="border-t bg-muted/30 py-16">
+      <section className="border-t bg-muted/30 py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h2 className="mb-2 font-display text-3xl font-bold md:text-4xl">Browse by Category</h2>
-            <p className="text-muted-foreground">Explore research across different biotechnology fields</p>
+            <h2 className="mb-2 font-display text-3xl font-bold md:text-4xl">{t.home.browseByCategory}</h2>
+            <p className="text-muted-foreground">{t.home.browseByCategoryDesc}</p>
           </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
             {categories.map((category) => (
               <CategoryCard key={category.id} {...category} />
             ))}
@@ -181,13 +197,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t py-16">
+      <section className="border-t py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h2 className="mb-2 font-display text-3xl font-bold md:text-4xl">Latest Articles</h2>
-            <p className="text-muted-foreground">Stay updated with the newest research and discoveries</p>
+            <h2 className="mb-2 font-display text-3xl font-bold md:text-4xl">{t.home.latestArticles}</h2>
+            <p className="text-muted-foreground">{t.home.latestArticlesDesc}</p>
           </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
             {latestArticles.map((article) => (
               <ArticleCard key={article.id} {...article} />
             ))}
@@ -195,15 +211,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t bg-muted/30 py-16">
+      <section className="border-t bg-muted/30 py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h2 className="mb-2 font-display text-3xl font-bold md:text-4xl">Featured Researchers</h2>
-            <p className="text-muted-foreground">Meet the scientists driving biotech innovation</p>
+            <h2 className="mb-2 font-display text-3xl font-bold md:text-4xl">{t.home.featuredCreators}</h2>
+            <p className="text-muted-foreground">{t.home.featuredCreatorsDesc}</p>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {researchers.map((researcher) => (
-              <ResearcherCard key={researcher.id} {...researcher} />
+          <div className="grid gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
+            {creators.map((creator) => (
+              <CreatorCard key={creator.id} {...creator} />
             ))}
           </div>
         </div>

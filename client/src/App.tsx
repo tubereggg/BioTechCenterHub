@@ -4,10 +4,11 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import Home from "@/pages/Home";
 import Categories from "@/pages/Categories";
-import Researchers from "@/pages/Researchers";
-import Writers from "@/pages/Writers";
+import Creators from "@/pages/Creators";
+import About from "@/pages/About";
 import ArticleDetail from "@/pages/ArticleDetail";
 import NewArticle from "@/pages/NewArticle";
 import NotFound from "@/pages/not-found";
@@ -17,8 +18,8 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/categories" component={Categories} />
-      <Route path="/researchers" component={Researchers} />
-      <Route path="/writers" component={Writers} />
+      <Route path="/creators" component={Creators} />
+      <Route path="/about" component={About} />
       <Route path="/article/:id" component={ArticleDetail} />
       <Route path="/new-article" component={NewArticle} />
       <Route component={NotFound} />
@@ -29,12 +30,14 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
+      <LanguageProvider>
+        <ThemeProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </ThemeProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

@@ -1,11 +1,16 @@
 import { Link } from "wouter";
 import { Github, Twitter, Linkedin } from "lucide-react";
+import { useLanguage } from "./LanguageProvider";
+import { translations } from "@/lib/translations";
 
 export function Footer() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <footer className="border-t">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-4">
+      <div className="container mx-auto px-4 py-8 md:py-12">
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <div className="mb-4 flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary">
@@ -14,31 +19,24 @@ export function Footer() {
               <span className="font-display text-xl font-bold">BioTech Research</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Advancing scientific knowledge through cutting-edge biotechnology research and innovation.
+              {t.footer.tagline}
             </p>
           </div>
 
           <div>
-            <h3 className="mb-4 font-display text-sm font-semibold">Browse</h3>
+            <h3 className="mb-4 font-display text-sm font-semibold">{t.footer.browse}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/categories">
                   <a className="text-muted-foreground hover-elevate rounded px-2 py-1" data-testid="link-footer-categories">
-                    Categories
+                    {t.nav.categories}
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/researchers">
-                  <a className="text-muted-foreground hover-elevate rounded px-2 py-1" data-testid="link-footer-researchers">
-                    Researchers
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/writers">
-                  <a className="text-muted-foreground hover-elevate rounded px-2 py-1" data-testid="link-footer-writers">
-                    Writers
+                <Link href="/creators">
+                  <a className="text-muted-foreground hover-elevate rounded px-2 py-1" data-testid="link-footer-creators">
+                    {t.nav.creators}
                   </a>
                 </Link>
               </li>
@@ -46,28 +44,30 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-display text-sm font-semibold">Company</h3>
+            <h3 className="mb-4 font-display text-sm font-semibold">{t.footer.company}</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-muted-foreground hover-elevate rounded px-2 py-1" data-testid="link-footer-about">
-                  About Us
-                </a>
+                <Link href="/about">
+                  <a className="text-muted-foreground hover-elevate rounded px-2 py-1" data-testid="link-footer-about">
+                    {t.footer.about}
+                  </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover-elevate rounded px-2 py-1" data-testid="link-footer-contact">
-                  Contact
+                  {t.footer.contact}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover-elevate rounded px-2 py-1" data-testid="link-footer-privacy">
-                  Privacy Policy
+                  {t.footer.privacy}
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="mb-4 font-display text-sm font-semibold">Connect</h3>
+            <h3 className="mb-4 font-display text-sm font-semibold">{t.footer.connect}</h3>
             <div className="flex gap-2">
               <a 
                 href="#" 
@@ -95,7 +95,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} BioTech Research Hub. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} BioTech Research Hub. {t.footer.rights}</p>
         </div>
       </div>
     </footer>
