@@ -9,6 +9,7 @@ import Categories from "@/pages/Categories";
 import Researchers from "@/pages/Researchers";
 import Writers from "@/pages/Writers";
 import ArticleDetail from "@/pages/ArticleDetail";
+import NewArticle from "@/pages/NewArticle";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/researchers" component={Researchers} />
       <Route path="/writers" component={Writers} />
       <Route path="/article/:id" component={ArticleDetail} />
+      <Route path="/new-article" component={NewArticle} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -67,10 +67,12 @@ export function Header({ onMenuClick }: { onMenuClick?: () => void }) {
             <Search className="h-5 w-5" />
           </Button>
           <ThemeToggle />
-          <Button size="sm" className="hidden gap-2 md:flex" data-testid="button-new-article">
-            <Plus className="h-4 w-4" />
-            New Article
-          </Button>
+          <Link href="/new-article">
+            <Button size="sm" className="hidden gap-2 md:flex" data-testid="button-new-article">
+              <Plus className="h-4 w-4" />
+              New Article
+            </Button>
+          </Link>
         </div>
       </div>
     </header>
