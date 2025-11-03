@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "./LanguageProvider";
 import { translations } from "@/lib/translations";
-import { Home, FolderOpen, Users, Info, Plus } from "lucide-react";
+import { Home, FolderOpen, Users, Info } from "lucide-react";
 
 interface MobileMenuProps {
   open: boolean;
@@ -57,17 +57,6 @@ export function MobileMenu({ open, onOpenChange }: MobileMenuProps) {
             );
           })}
         </nav>
-
-        <div className="mt-6 border-t pt-6">
-          <Link href="/new-article">
-            <a onClick={() => onOpenChange(false)}>
-              <Button className="w-full gap-2" data-testid="button-mobile-new-article">
-                <Plus className="h-4 w-4" />
-                {t.nav.newArticle}
-              </Button>
-            </a>
-          </Link>
-        </div>
       </SheetContent>
     </Sheet>
   );
