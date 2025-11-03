@@ -14,12 +14,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
-import { Save, Eye, Upload, X } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { useState, useEffect } from "react";
+import { Save, Eye, Upload, X, AlertTriangle, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function NewArticle() {
   const { toast } = useToast();
+  const { isAuthenticated, isAdmin, isLoading } = useAuth();
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
@@ -27,6 +30,19 @@ export default function NewArticle() {
   const [tags, setTags] = useState<string[]>([]);
   const [currentTag, setCurrentTag] = useState("");
   const [readTime, setReadTime] = useState("5");
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to access this page.",
+        variant: "destructive",
+      });
+      setTimeout(() => {
+        window.location.href = '/api/login';
+      }, 1500);
+    }
+  }, [isAuthenticated, isLoading, toast]);
 
   const handleAddTag = () => {
     if (currentTag.trim() && !tags.includes(currentTag.trim())) {
@@ -62,6 +78,62 @@ export default function NewArticle() {
       description: "Preview functionality coming soon.",
     });
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="border-t">
+          <div className="container mx-auto flex min-h-[60vh] items-center justify-center px-4">
+            <p className="text-muted-foreground">Loading...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="border-t">
+          <div className="container mx-auto flex min-h-[60vh] items-center justify-center px-4">
+            <p className="text-muted-foreground">Redirecting to login...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="border-t">
+          <div className="container mx-auto px-4 py-12 md:py-16">
+            <div className="mx-auto max-w-2xl">
+              <Alert variant="destructive">
+                <Lock className="h-4 w-4" />
+                <AlertTitle>Admin Access Required</AlertTitle>
+                <AlertDescription>
+                  This page is only accessible to administrators. Only admin users can create and publish articles.
+                  If you believe you should have admin access, please contact a system administrator.
+                </AlertDescription>
+              </Alert>
+              <div className="mt-8 text-center">
+                <Button variant="outline" onClick={() => window.location.href = '/'} data-testid="button-back-home">
+                  Back to Home
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">

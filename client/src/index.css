@@ -139,11 +139,11 @@
 
   --border: 210 6% 18%;
 
-  --card: 210 6% 10%;
+  --card: 210 6% 12%;
 
-  --card-foreground: 210 5% 92%;
+  --card-foreground: 210 5% 95%;
 
-  --card-border: 210 6% 14%;
+  --card-border: 210 6% 18%;
 
   --sidebar: 210 6% 12%;
 
@@ -173,11 +173,11 @@
 
   --secondary: 210 6% 18%;
 
-  --secondary-foreground: 210 5% 92%;
+  --secondary-foreground: 210 5% 88%;
 
   --muted: 210 8% 16%;
 
-  --muted-foreground: 210 5% 65%;
+  --muted-foreground: 210 5% 72%;
 
   --accent: 210 12% 18%;
 

@@ -46,7 +46,7 @@ export function ArticleCard({
             <h3 className="mb-2 line-clamp-2 font-display text-xl font-semibold" data-testid={`text-title-${id}`}>
               {title}
             </h3>
-            <p className="mb-4 line-clamp-2 text-sm text-muted-foreground" data-testid={`text-excerpt-${id}`}>
+            <p className="mb-4 line-clamp-2 text-sm text-secondary-foreground" data-testid={`text-excerpt-${id}`}>
               {excerpt}
             </p>
             <div className="flex items-center justify-between gap-4">

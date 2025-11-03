@@ -69,37 +69,37 @@ export default function ArticleDetail() {
                 </Button>
               </div>
 
-              <div className="prose prose-lg max-w-none">
-                <p className="lead text-xl leading-relaxed text-muted-foreground">
+              <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-display prose-p:text-foreground prose-p:leading-relaxed dark:prose-p:text-foreground">
+                <p className="lead text-xl leading-relaxed text-secondary-foreground dark:text-secondary-foreground">
                   CRISPR-Cas9 has emerged as one of the most powerful tools in modern molecular biology, 
                   enabling precise modifications to DNA with unprecedented accuracy and efficiency. This 
                   revolutionary technology is transforming our approach to treating genetic diseases.
                 </p>
 
-                <h2 className="mt-12 font-display text-2xl font-semibold">The Breakthrough</h2>
-                <p>
+                <h2 className="mt-12 font-display text-2xl font-semibold text-foreground">The Breakthrough</h2>
+                <p className="text-foreground">
                   The CRISPR-Cas9 system, adapted from a natural defense mechanism found in bacteria, allows 
                   scientists to target specific sequences of DNA and make precise cuts. This capability has 
                   opened up new possibilities in gene therapy, agriculture, and basic research.
                 </p>
 
-                <h2 className="mt-8 font-display text-2xl font-semibold">Clinical Applications</h2>
-                <p>
+                <h2 className="mt-8 font-display text-2xl font-semibold text-foreground">Clinical Applications</h2>
+                <p className="text-foreground">
                   Recent clinical trials have demonstrated the potential of CRISPR-Cas9 in treating various 
                   genetic disorders, including sickle cell disease and beta-thalassemia. Patients who received 
                   CRISPR-edited cells showed significant improvements in their conditions, with some achieving 
                   complete remission.
                 </p>
 
-                <h2 className="mt-8 font-display text-2xl font-semibold">Future Prospects</h2>
-                <p>
+                <h2 className="mt-8 font-display text-2xl font-semibold text-foreground">Future Prospects</h2>
+                <p className="text-foreground">
                   As the technology continues to evolve, researchers are exploring new applications, from 
                   cancer immunotherapy to developing disease-resistant crops. The potential impact on medicine 
                   and agriculture is immense, though ethical considerations remain an important part of the 
                   conversation.
                 </p>
 
-                <p>
+                <p className="text-foreground">
                   The journey of CRISPR-Cas9 from laboratory discovery to clinical application exemplifies 
                   the rapid pace of innovation in biotechnology. As we continue to refine and expand this 
                   technology, we move closer to a future where genetic diseases may become a thing of the past.
