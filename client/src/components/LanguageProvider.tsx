@@ -14,7 +14,7 @@ type LanguageProviderState = {
 
 const LanguageProviderContext = createContext<LanguageProviderState | undefined>(undefined);
 
-export function LanguageProvider({ children, defaultLanguage = "en" }: LanguageProviderProps) {
+export function LanguageProvider({ children, defaultLanguage = "th" }: LanguageProviderProps) {
   const [language, setLanguage] = useState<Language>(() => {
     const stored = localStorage.getItem("language") as Language;
     return stored || defaultLanguage;

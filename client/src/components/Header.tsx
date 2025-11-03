@@ -2,7 +2,6 @@ import { Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "./ThemeToggle";
-import { LanguageToggle } from "./LanguageToggle";
 import { MobileMenu } from "./MobileMenu";
 import { useLanguage } from "./LanguageProvider";
 import { translations } from "@/lib/translations";
@@ -74,7 +73,6 @@ export function Header() {
           <Button variant="ghost" size="icon" className="lg:hidden" data-testid="button-search-mobile">
             <Search className="h-5 w-5" />
           </Button>
-          <LanguageToggle />
           <ThemeToggle />
           </div>
         </div>
