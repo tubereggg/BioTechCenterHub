@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { Card } from "@/components/ui/card";
 import { Dna, Users, Globe, Zap } from "lucide-react";
 
@@ -98,6 +99,7 @@ export default function About() {
       </div>
 
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

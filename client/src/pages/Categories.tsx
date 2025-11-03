@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { CategoryCard } from "@/components/CategoryCard";
 import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { Dna, Microscope, Atom, Pill, Sparkles, Zap, Activity, Beaker } from "lucide-react";
 
 export default function Categories() {
@@ -85,6 +86,7 @@ export default function Categories() {
       </div>
 
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

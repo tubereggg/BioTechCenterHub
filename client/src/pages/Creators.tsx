@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { CreatorCard } from "@/components/CreatorCard";
 import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import femaleResearcher from "@assets/generated_images/Female_researcher_profile_photo_9dfa74e0.png";
@@ -114,6 +115,7 @@ export default function Creators() {
       </div>
 
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

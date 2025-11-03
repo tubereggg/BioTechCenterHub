@@ -6,6 +6,7 @@ import { CreatorCard } from "@/components/CreatorCard";
 import { Newsletter } from "@/components/Newsletter";
 import { Footer } from "@/components/Footer";
 import { FeaturedSlideshow } from "@/components/FeaturedSlideshow";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { useLanguage } from "@/components/LanguageProvider";
 import { translations } from "@/lib/translations";
 import { Dna, Microscope, Atom, Pill, Sparkles, Zap } from "lucide-react";
@@ -227,6 +228,7 @@ export default function Home() {
 
       <Newsletter />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
